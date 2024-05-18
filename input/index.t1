@@ -1,0 +1,4 @@
+let 1 = 1;
+import "./test/logic2.t1";
+5+5;
+import "./test/logic1.t1";
