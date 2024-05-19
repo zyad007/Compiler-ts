@@ -19,6 +19,8 @@ export enum TokenType {
     NOT = '!=',
     GREAT = '>',
     LESS = '<',
+    EGREAT = '>=',
+    ELESS = '<=',
 
     // Assign
     ASSIGN = '=',

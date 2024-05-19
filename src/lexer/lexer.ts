@@ -1,6 +1,6 @@
 import { readFileSync } from "fs";
-import { Token } from "../types/Token";
-import { TokenType } from "../types/TokenType";
+import { Token } from "../utils/types/Token";
+import { TokenType } from "../utils/enums/TokenType";
 import path from "path";
 
 export class Lexer {
@@ -94,6 +94,16 @@ export class Lexer {
                 return { type: TokenType.MINUS, line: this.line, col: this.col, path: this.path };
             }
 
+            if (this.currentChar === '*') {
+                this.walk();
+                return { type: TokenType.MUL, line: this.line, col: this.col, path: this.path };
+            }
+
+            if (this.currentChar === '/') {
+                this.walk();
+                return { type: TokenType.DIV, line: this.line, col: this.col, path: this.path };
+            }
+
             if (this.currentChar === '=') {
                 if (this.peakMatch('==')) return { type: TokenType.EQUAL, line: this.line, col: this.col, path: this.path };
 
@@ -106,11 +116,15 @@ export class Lexer {
             }
 
             if (this.currentChar === '>') {
+                if (this.peakMatch('>=')) return { type: TokenType.EGREAT, line: this.line, col: this.col, path: this.path }
+
                 this.walk();
                 return { type: TokenType.GREAT, line: this.line, col: this.col, path: this.path };
             }
 
             if (this.currentChar === '<') {
+                if (this.peakMatch('<=')) return { type: TokenType.ELESS, line: this.line, col: this.col, path: this.path }
+
                 this.walk();
                 return { type: TokenType.LESS, line: this.line, col: this.col, path: this.path };
             }

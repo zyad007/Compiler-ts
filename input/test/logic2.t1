@@ -1,1 +1,3 @@
-"123232";
+let newV = 1;
+
+if( newV <= 0 ) let newV = 2;

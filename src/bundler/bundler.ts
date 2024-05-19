@@ -1,7 +1,7 @@
 import path from "path";
 import { Lexer } from "../lexer/lexer";
-import { Token } from "../types/Token";
-import { TokenType } from "../types/TokenType";
+import { Token } from "../utils/types/Token";
+import { TokenType } from "../utils/enums/TokenType";
 
 export class Bundler {
 
